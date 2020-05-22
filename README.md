@@ -1,7 +1,4 @@
-# umi-plugin-test
-
-[![NPM version](https://img.shields.io/npm/v/umi-plugin-test.svg?style=flat)](https://npmjs.org/package/umi-plugin-test)
-[![NPM downloads](http://img.shields.io/npm/dm/umi-plugin-test.svg?style=flat)](https://npmjs.org/package/umi-plugin-test)
+# @umijs/antd-theme-plugin
 
 
 
@@ -9,29 +6,28 @@
 
 ```bash
 # or yarn
-$ npm install
+$ npm @umijs/antd-theme-plugin
 ```
 
-```bash
-$ npm run build --watch
-$ npm run start
-```
 
 ## Usage
 
-Configure in `.umirc.js`,
+Configure `theme.config.ts` in `config` dir.
 
+eg.
 ```js
+// theme.config.ts
 export default {
-  plugins: [
-    ['umi-plugin-test'],
-  ],
+  theme: [
+    {
+      stylePath: require.resolve('antd/lib/style/themes/dark.less'), // your theme file path.
+      fileName: 'dark.css', // the generated css file name.
+    }
+  ]
 }
+
 ```
 
-## Options
-
-TODO
 
 ## LICENSE
 
