@@ -6,7 +6,7 @@
 
 ```bash
 # or yarn
-$ npm umi-plugin-theme
+$ npm install umi-plugin-theme -D
 ```
 
 

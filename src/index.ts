@@ -10,18 +10,19 @@ import less from 'less';
 import defaultTheme from './defaultTheme';
 import uglifycss from 'uglifycss';
 
-interface themeConfig {
+interface ThemeConfig {
   theme?: string;
   stylePath: string;
   fileName: string;
-  key: string;
+  key?: string;
   modifyVars?: { [key: string]: string };
 }
 
 export default function (api: IApi) {
   api.logger.info('use plugin');
+
   let options: {
-    theme: themeConfig[];
+    theme: ThemeConfig[];
   } = defaultTheme;
   // 获取主题 json 配置文件
   const themeConfigPath = winPath(path.join(api.paths.cwd || '', 'config/theme.config.ts'));
@@ -50,20 +51,14 @@ export default function (api: IApi) {
       if (existsSync(winPath(path.join(themeTemp, 'theme')))) {
         rimraf.sync(winPath(path.join(themeTemp, 'theme')));
       }
-
+      mkdirSync(themeTemp);
       mkdirSync(winPath(path.join(themeTemp, 'theme')));
     } catch (error) {
       console.log(error);
     }
+    const antdPath = require.resolve('antd');
+    const darkPath = path.join(antdPath, '../../dist/antd.dark.min.css');
 
-    // 读取 options 配置，根据配置生成对应资源
-    options.theme.forEach(themeOpt => {
-      const { fileName, stylePath } = themeOpt;
-      const antdLess = readFileSync(stylePath, 'utf-8');
-      less.render(antdLess, {}).then(out => {
-        const css = uglifycss.processString(out.css);
-        writeFileSync(fileName, css);
-      });
-    });
+    writeFileSync(`${themeTemp}/theme/dark.css`, readFileSync(darkPath).toString());
   })
 }
