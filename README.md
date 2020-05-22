@@ -1,4 +1,4 @@
-# @umijs/antd-theme-plugin
+# umi-plugin-theme
 
 
 
@@ -6,7 +6,7 @@
 
 ```bash
 # or yarn
-$ npm @umijs/antd-theme-plugin
+$ npm umi-plugin-theme
 ```
 
 

@@ -1,12 +1,13 @@
 {
-  "name": "@umijs/antd-theme-plugin",
+  "name": "umi-plugin-theme",
   "main": "lib/index.js",
   "description": "",
+  "version": "0.0.1",
   "authors": {
-    "name": "",
+    "name": "houxiancheng",
     "email": ""
   },
-  "repository": "umi-antd-theme-plugin",
+  "repository": "umi-plugin-theme",
   "scripts": {
     "start": "cross-env APP_ROOT=example umi dev",
     "build": "father-build",
